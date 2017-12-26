@@ -1,10 +1,8 @@
-
-
 import React from 'react';
 import { shallow } from 'enzyme';
-import Tools from './';
+import HomeNav from './';
 
 it('Test example', () => {
-  const wrapper = shallow(<Tools />);
+  const wrapper = shallow(<HomeNav />);
   expect(wrapper.is('ul')).toBeTruthy();
 });

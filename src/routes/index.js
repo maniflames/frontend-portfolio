@@ -14,18 +14,18 @@ const importHome = (nextState, cb) => {
     .catch((e) => { throw e; });
 };
 
-const importTools = (nextState, cb) => {
-  System.import('../components/Tools')
+const importProjects = (nextState, cb) => {
+    System.import('../redux/containers/Projects')
     .then(module => cb(null, module.default))
     .catch((e) => { throw e; });
-};
+}
 
 // We use `getComponent` to dynamically load routes.
 // https://github.com/reactjs/react-router/blob/master/docs/guides/DynamicRouting.md
 const routes = (
   <Route path="/" component={App}>
     <IndexRoute getComponent={importHome} />
-    <Route path="tools" getComponent={importTools} />
+    <Route path={"projects"} getComponent={importProjects} />
   </Route>
 );
 
@@ -34,7 +34,7 @@ const routes = (
 // https://github.com/gaearon/react-hot-loader/issues/288
 if (module.hot) {
   require('../components/Home');    // eslint-disable-line global-require
-  require('../components/Tools');   // eslint-disable-line global-require
+  require('../redux/containers/Projects');
 }
 
 export default routes;

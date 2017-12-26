@@ -1,5 +1,17 @@
 
 @import '../../shared-styles/variables';
+@import '../../shared-styles/fonts';
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #ffffff;
+}
+
+h1 {
+  font-family: $h-font-family;
+}
 
 .paragraph + .paragraph {
   padding-top: $padding;
