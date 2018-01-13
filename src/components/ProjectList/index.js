@@ -15,7 +15,7 @@ function ProjectList(props) {
 
     if(fetched && !error) {
         const projectsHtml = props.projects.map((project) => {
-            return <li key={ project.id }><Project data={ project }></Project></li>
+            return <li key={ project._id }><Project data={ project }></Project></li>
         })
 
         return <ul>{ projectsHtml }</ul>

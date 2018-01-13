@@ -18,17 +18,17 @@ export function reqError(err){
     }
 }
 
+//TODO: Refactor this name
 export function fetchList(url){
     return (dispatch) => {
-        // const reqHeaders = new Headers();
-        // reqHeaders.append('Accept', 'application/json');
+        const reqHeaders = new Headers();
+        reqHeaders.append('Accept', 'application/json');
 
         const init = {
             method: 'GET',
-            // headers: reqHeaders,
+            headers: reqHeaders,
             mode: 'cors',
         };
-
 
         dispatch(reqStart())
         return fetch(url, init)

@@ -10,7 +10,7 @@ import styles from './styles.scss';
     return store
 })
 
-class Projects extends React.Component {
+class ProjectsContainer extends React.Component {
     componentDidMount() {
         this.props.dispatch(fetchList('http://api.imanidap.nl/projects?limit=5'));
     }
@@ -31,4 +31,4 @@ class Projects extends React.Component {
     }
 }
 
-export default Projects;
+export default ProjectsContainer;

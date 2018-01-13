@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Route from 'react-router/lib/Route';
 import IndexRoute from 'react-router/lib/IndexRoute';
@@ -8,14 +7,20 @@ import App from '../components/App';
 // chunking assets. Check out the following for more:
 // https://gist.github.com/sokra/27b24881210b56bbaff7#code-splitting-with-es6
 
-const importHome = (nextState, cb) => {
+const Home = (nextState, cb) => {
   System.import('../components/Home')
     .then(module => cb(null, module.default))
     .catch((e) => { throw e; });
 };
 
-const importProjects = (nextState, cb) => {
-    System.import('../redux/containers/Projects')
+const ProjectsContainer = (nextState, cb) => {
+    System.import('../redux/containers/ProjectsContainer')
+    .then(module => cb(null, module.default))
+    .catch((e) => { throw e; });
+}
+
+const ProjectDetailContainer = (nextState, cb) => {
+    System.import('../redux/containers/ProjectDetailContainer')
     .then(module => cb(null, module.default))
     .catch((e) => { throw e; });
 }
@@ -24,8 +29,9 @@ const importProjects = (nextState, cb) => {
 // https://github.com/reactjs/react-router/blob/master/docs/guides/DynamicRouting.md
 const routes = (
   <Route path="/" component={App}>
-    <IndexRoute getComponent={importHome} />
-    <Route path={"projects"} getComponent={importProjects} />
+    <IndexRoute getComponent={Home} />
+    <Route path={"projects"} getComponent={ProjectsContainer} />
+    <Route path={"projects/:id"} getComponent={ProjectDetailContainer} />
   </Route>
 );
 
@@ -34,7 +40,8 @@ const routes = (
 // https://github.com/gaearon/react-hot-loader/issues/288
 if (module.hot) {
   require('../components/Home');    // eslint-disable-line global-require
-  require('../redux/containers/Projects');
+  require('../redux/containers/ProjectsContainer');
+  require('../redux/containers/ProjectDetailContainer'); 
 }
 
 export default routes;
