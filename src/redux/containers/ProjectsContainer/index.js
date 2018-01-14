@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchList } from '../../actions/projectActions';
+import { fetchList, remove, add } from '../../actions/projectActions';
 import Project from '../../../components/Project';
 import ProjectList from '../../../components/ProjectList';
 import Pagination from '../../../components/Pagination';
@@ -15,6 +15,14 @@ class ProjectsContainer extends React.Component {
         this.props.dispatch(fetchList('http://api.imanidap.nl/projects?limit=5'));
     }
 
+    addClickHandler(url, project) {
+      this.props.dispatch(add(url, project));
+    }
+
+    removeClickHandler(url) {
+      this.props.dispatch(remove(url));
+    }
+
     render() {
         const fetched = this.props.projects.fetched;
         const error = this.props.projects.error;
@@ -24,11 +32,24 @@ class ProjectsContainer extends React.Component {
         return (
             <div>
                 <h1>Projects</h1>
-                 <ProjectList fetched={ fetched } error={ error } projects={ projects }></ProjectList>
-                 <Pagination data={ pagination } dispatch={(url) => { this.props.dispatch(fetchList(url)) }}></Pagination>
+                 <ProjectList
+                     baseUrl="http://api.imanidap.nl/projects/"
+                     fetched={ fetched }
+                     error={ error }
+                     projects={ projects }
+                     add={(url, project) => { this.addClickHandler(url, project) }}
+                     remove={(url) => { this.removeClickHandler(url) }}
+                 >
+                 </ProjectList>
+                 <Pagination
+                     data={ pagination }
+                     get={(url) => { this.props.dispatch(fetchList(url)) }}
+                 >
+                </Pagination>
             </div>
         )
     }
 }
+
 
 export default ProjectsContainer;

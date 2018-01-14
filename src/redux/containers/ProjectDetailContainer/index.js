@@ -8,12 +8,11 @@ import { fetchList } from '../../actions/projectActions';
 
 class ProjectDetailContainer extends React.Component {
     componentDidMount() {
-        this.props.dispatch(fetchList('http://api.imanidap.nl/projects/5a3411e572734dc7e6d24e53'))
+        this.props.dispatch(fetchList('http://api.imanidap.nl/projects/' + this.props.params.id ))
     }
 
     render(){
         const project = this.props.projects.data;
-        console.log(project);
         return(
             <div>
                 <img src={ project.img_url } witdh="500" height="500" />

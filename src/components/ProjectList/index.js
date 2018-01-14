@@ -15,10 +15,28 @@ function ProjectList(props) {
 
     if(fetched && !error) {
         const projectsHtml = props.projects.map((project) => {
-            return <li key={ project._id }><Project data={ project }></Project></li>
+            return (
+              <li key={ project._id }>
+                <div onClick={() => {props.remove(props.baseUrl + project._id)}}>x</div>
+                <Project data={ project }></Project>
+              </li>
+            )
         })
 
-        return <ul>{ projectsHtml }</ul>
+        const mockupProject = {
+          "description": "lolol",
+          "name": "mdsjdf",
+          "img_url": "https://images.unsplash.com/photo-1505424297051-c3ad50b055ae?auto=format&fit=crop&w=1951&q=80",
+          "git_url": "lolololol",
+          "content": "hihiihihh"
+        }
+
+        return (
+          <div>
+            <ul>{ projectsHtml }</ul>
+            <h3 onClick={() => {props.add(props.baseUrl, mockupProject)}}>+</h3>
+          </div>
+        )
     }
 
     if(fetched && error){

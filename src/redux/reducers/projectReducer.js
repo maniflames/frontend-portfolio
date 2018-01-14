@@ -14,15 +14,46 @@ const initState = {
 const projectReducer = (state=initState, action={type: 'default'}) => {
     switch (action.type) {
         case 'START_PROJECTS_REQ': {
-            return {...initState, fetched: false} //rturning initState cuz otherwise errors get cached
+            return {...state, fetched: false}
             break;
         }
         case 'SUCCESS_PROJECTS_REQ': {
-            return {...state, fetched: true, data: action.payload}
+            return {...initState, fetched: true, data: action.payload}
             break;
         }
         case 'ERROR_PROJECTS_REQ': {
             return {...state, fetched: true, error: action.payload}
+            break;
+        }
+        case 'START_PROJECTS_REMOVE': {
+            return {...state, fetched: false}
+            break;
+        }
+        case 'SUCCESS_PROJECTS_REMOVE': {
+            return {...state, fetched: true}
+            break;
+        }
+        case 'ERROR_PROJECTS_REMOVE': {
+            return {...state, fetched: true, error: action.payload}
+            break;
+        }
+        case 'START_PROJECTS_ADD': {
+            return {...state, fetched: false}
+            break;
+        }
+        case 'SUCCESS_PROJECTS_ADD': {
+            return { ...initState,
+              fetched: true,
+              data: {
+                items: state.data.items.concat([action.payload]),
+                ...state.data
+              }
+            }
+            break;
+        }
+        case 'ERROR_PROJECTS_ADD': {
+            return {...state, fetched: true, error: action.payload}
+            break;
         }
     }
 
