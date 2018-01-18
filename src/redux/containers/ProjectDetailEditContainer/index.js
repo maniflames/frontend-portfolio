@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchList } from '../../actions/projectActions';
-import { formChange } from '../../actions/projectFormActions';
+import { fetchList, edit } from '../../actions/projectActions';
+
 import ProjectDetailEditForm from '../../../components/ProjectDetailEditForm';
 
 @connect((store) => {
@@ -13,16 +13,18 @@ class ProjectDetailContainer extends React.Component {
         this.props.dispatch(fetchList('http://api.imanidap.nl/projects/' + this.props.params.id ))
     }
 
-    formChangeHandler(e) {
-        const target = e.target;
-        let field = {};
-        field[e.target.name] = e.target.value;
-        this.props.dispatch(formChange(this.props.params.id, field));
-        console.log(target);
-        //TODO: refactor into submit state handler for action 
+    formSubmitHandler(e) {
+        e.preventDefault();
 
-        //field name, rest operator this.props.projects.data
-        //Change form state (I'm thinking about how I think I might have to bow down to local state)
+        const target = e.target;
+        let project = {};
+        target.childNodes.forEach((element) => {
+            if(element.name === 'submit'){
+              return;
+            }
+            project[element.name] = element.value;
+        })
+       this.props.dispatch(edit('http://api.imanidap.nl/projects/' + this.props.params.id, project));
     }
 
     render() {
@@ -32,7 +34,7 @@ class ProjectDetailContainer extends React.Component {
             <div>
                 <ProjectDetailEditForm
                     prefill={ project }
-                    changeHandler={ (e) => { this.formChangeHandler(e) }}
+                    submitHandler={ (e) => { this.formSubmitHandler(e) }}
                 >
                 </ProjectDetailEditForm>
             </div>

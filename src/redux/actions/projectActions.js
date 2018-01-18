@@ -57,6 +57,28 @@ export function addError(err){
     }
 }
 
+export function editStart(){
+    return {
+        type: 'START_PROJECTS_EDIT',
+    }
+}
+
+export function editSuccess(newProject){
+    return {
+        type: 'SUCCESS_PROJECTS_EDIT',
+        payload: {
+            project: newProject,
+        },
+    }
+}
+
+export function editError(err){
+    return {
+        type: 'ERROR_PROJECTS_EDIT',
+        payload: err,
+    }
+}
+
 //TODO: Refactor this name
 export function fetchList(url){
     return (dispatch) => {
@@ -143,6 +165,36 @@ export function add(url, project){
     .catch((err) => {
         console.log(err)
         dispatch(addError(err))
+    })
+
+  }
+}
+
+export function edit(url, project){
+  return (dispatch) => {
+    let reqHeaders = new Headers();
+    reqHeaders.append('Accept', 'application/json');
+    reqHeaders.append('Content-Type', 'application/json');
+
+    const init = {
+      method: 'PUT',
+      headers: reqHeaders,
+      mode: 'cors',
+      body: JSON.stringify(project),
+    }
+
+    dispatch(editStart())
+
+    return fetch(url, init)
+    .then((res) => {
+        return res.json()
+    })
+    .then((json) => {
+        dispatch(editSuccess(json))
+    })
+    .catch((err) => {
+        console.log(err)
+        dispatch(editError(err))
     })
 
   }

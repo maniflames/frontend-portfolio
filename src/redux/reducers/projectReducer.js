@@ -2,6 +2,7 @@ const initState = {
     data: [],
     error: false,
     fetched: false,
+    updated: false,
 }
 
 //NOTE: I tried to avoid the switch but this object doesn't return functions in the way I had intended
@@ -55,12 +56,26 @@ const projectReducer = (state=initState, action={type: 'default'}) => {
             return {...state, fetched: true, error: action.payload}
             break;
         }
-        case 'CHANGE_FORM': {
-            console.log(action.payload); 
-            return {...state}
+        case 'START_PROJECTS_ADD': {
+            return {...state, fetched: false, updated: false}
             break;
         }
-        //get data from state, filter object with given id from array, concat new array from fltered array and array with new object
+        case 'SUCCESS_PROJECTS_EDIT': {
+            return {...initState,
+              fetched: true,
+              updated: true,
+              data: action.payload.project,
+            }
+            break;
+        }
+        case 'ERROR_PROJECTS_ADD': {
+            return {...state,
+              fetched: true,
+              updated: false,
+              error: action.payload,
+            }
+            break;
+        }
     }
 
     return state;
