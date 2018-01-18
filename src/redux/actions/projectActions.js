@@ -39,7 +39,7 @@ export function removeError(err){
 
 export function addStart(){
     return {
-        type: 'START_PROJECTS_ADD'
+        type: 'START_PROJECTS_ADD',
     }
 }
 

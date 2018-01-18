@@ -55,6 +55,12 @@ const projectReducer = (state=initState, action={type: 'default'}) => {
             return {...state, fetched: true, error: action.payload}
             break;
         }
+        case 'CHANGE_FORM': {
+            console.log(action.payload); 
+            return {...state}
+            break;
+        }
+        //get data from state, filter object with given id from array, concat new array from fltered array and array with new object
     }
 
     return state;
