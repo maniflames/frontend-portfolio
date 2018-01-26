@@ -9,15 +9,16 @@ function ProjectList(props) {
     const fetched = props.fetched;
     const error = props.error;
 
+
     if(!fetched) {
         return <h3>Loading .....</h3>
     }
 
     if(fetched && !error) {
-        const projectsHtml = props.projects.map((project) => {
+        const projectsHtml = props.projects.map((project, index) => {
             return (
-              <li key={ project._id }>
-                <div onClick={() => {props.remove(props.baseUrl + project._id)}}>x</div>
+              <li key={ index }>
+                <div onClick={() => {props.remove(props.baseUrl + project._id, project._id)}}>Verwijderen</div>
                 <Project data={ project }></Project>
               </li>
             )
@@ -33,8 +34,8 @@ function ProjectList(props) {
 
         return (
           <div>
+            <p onClick={() => {props.add(props.baseUrl, mockupProject)}}>Toevoegen</p>
             <ul>{ projectsHtml }</ul>
-            <h3 onClick={() => {props.add(props.baseUrl, mockupProject)}}>+</h3>
           </div>
         )
     }

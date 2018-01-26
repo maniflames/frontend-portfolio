@@ -24,9 +24,12 @@ export function removeStart(){
     }
 }
 
-export function removeSuccess(){
+export function removeSuccess(id){
     return {
         type: 'SUCCESS_PROJECTS_REMOVE',
+        payload: {
+          project: id,
+        }
     }
 }
 
@@ -107,7 +110,7 @@ export function fetchList(url){
     }
 }
 
-export function remove(url){
+export function remove(url, id){
   return (dispatch) => {
     const reqHeaders = new Headers();
     reqHeaders.append('Accept', 'application/json');
@@ -130,7 +133,7 @@ export function remove(url){
       })
     })
     .then((json) => {
-        dispatch(removeSuccess(json))
+        dispatch(removeSuccess(id))
     })
     .catch((err) => {
         console.log(err)

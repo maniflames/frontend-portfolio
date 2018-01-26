@@ -38,7 +38,7 @@ const routes = (
     <IndexRoute getComponent={Home} />
     <Route path={"projects"} getComponent={ProjectsContainer} />
     <Route path={"projects/:id"} getComponent={ProjectDetailContainer} />
-    <Route path={"projects/:id/edit"} getComponent={ProjectDetailEditContainer} /> 
+    <Route path={"projects/:id/edit"} getComponent={ProjectDetailEditContainer} name="edit" />
   </Route>
 );
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ProjectDetailEditForm(props){
+function ProjectDetailForm(props){
     const prefill = props.prefill;
     const submitHandler = props.submitHandler;
 
@@ -16,4 +16,4 @@ function ProjectDetailEditForm(props){
     )
 }
 
-export default ProjectDetailEditForm;
+export default ProjectDetailForm;

@@ -19,6 +19,7 @@ const projectReducer = (state=initState, action={type: 'default'}) => {
             break;
         }
         case 'SUCCESS_PROJECTS_REQ': {
+          console.log(action.payload);
             return {...initState, fetched: true, data: action.payload}
             break;
         }
@@ -31,7 +32,20 @@ const projectReducer = (state=initState, action={type: 'default'}) => {
             break;
         }
         case 'SUCCESS_PROJECTS_REMOVE': {
-            return {...state, fetched: true}
+          const newItems = state.data.items.filter((project) => {
+            return project._id != action.payload.project;
+          });
+
+          console.log('after remove',newItems);
+
+            return {...state,
+              fetched: true,
+              data: {
+                items: newItems,
+                _links: state.data._links,
+                pagination: state.data.pagination,
+              }
+            }
             break;
         }
         case 'ERROR_PROJECTS_REMOVE': {
@@ -43,11 +57,15 @@ const projectReducer = (state=initState, action={type: 'default'}) => {
             break;
         }
         case 'SUCCESS_PROJECTS_ADD': {
+          const newItems = state.data.items.concat([action.payload]);
+          console.log(newItems);
+
             return { ...initState,
               fetched: true,
               data: {
-                items: state.data.items.concat([action.payload]),
-                ...state.data
+                items: newItems,
+                _links: state.data._links,
+                pagination: state.data.pagination,
               }
             }
             break;
@@ -61,10 +79,22 @@ const projectReducer = (state=initState, action={type: 'default'}) => {
             break;
         }
         case 'SUCCESS_PROJECTS_EDIT': {
+          const newItems = state.data.items.map((project) => {
+            if(project._id == action.payload.project._id){
+              return action.payload.project
+            } else {
+              return project;
+            }
+          })
+
             return {...initState,
               fetched: true,
               updated: true,
-              data: action.payload.project,
+              data: {
+                items: newItems,
+                _links: state.data._links,
+                pagination: state.data.pagination,
+              }
             }
             break;
         }

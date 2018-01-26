@@ -11,34 +11,36 @@ import styles from './styles.scss';
 })
 
 class ProjectsContainer extends React.Component {
+    projects = [];
+
     componentDidMount() {
-        this.props.dispatch(fetchList('http://api.imanidap.nl/projects?limit=5'));
+        this.props.dispatch(fetchList('http://api.imanidap.nl/projects?limit=5/'));
     }
 
     addClickHandler(url, project) {
       this.props.dispatch(add(url, project));
     }
 
-    removeClickHandler(url) {
-      this.props.dispatch(remove(url));
+    removeClickHandler(url, id) {
+      this.props.dispatch(remove(url, id));
     }
 
     render() {
-        const fetched = this.props.projects.fetched;
-        const error = this.props.projects.error;
-        const projects = this.props.projects.data.items;
-        const pagination = this.props.projects.data.pagination;
+        let fetched = this.props.projects.fetched;
+        let error = this.props.projects.error;
+        let projects = this.props.projects.data.items;
+        let pagination = this.props.projects.data.pagination;
 
         return (
             <div>
-                <h1>Projects</h1>
+                <h1>Alle projecten</h1>
                  <ProjectList
                      baseUrl="http://api.imanidap.nl/projects/"
                      fetched={ fetched }
                      error={ error }
                      projects={ projects }
                      add={(url, project) => { this.addClickHandler(url, project) }}
-                     remove={(url) => { this.removeClickHandler(url) }}
+                     remove={(url, id) => { this.removeClickHandler(url, id) }}
                  >
                  </ProjectList>
                  <Pagination

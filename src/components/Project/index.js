@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './styles.scss';
+import { Router, Route, Link } from 'react-router';
 
 function Project(props) {
     //TODO: move none varible styling to stylesheets
@@ -10,14 +11,14 @@ function Project(props) {
         height: 500,
     }
 
-    const url = "/projects/" + props.data._id;
+    const url = '/projects/' + props.data._id;
 
     return(
-        <a href={ url } >
-            <div style={ imgStyle } >
-                <h1>{ props.data.name }</h1>
-            </div>
-        </a>
+      <Link to={ url } >
+          <div style={ imgStyle } >
+              <h1>{ props.data.name }</h1>
+          </div>
+      </Link>
     )
 }
 
