@@ -6,6 +6,9 @@ import ProjectList from '../../../components/ProjectList';
 import Pagination from '../../../components/Pagination';
 import styles from './styles.scss';
 
+//temporary
+import Lol from '../../../components/Lol';
+
 @connect((store) => {
     return store
 })
@@ -30,10 +33,12 @@ class ProjectsContainer extends React.Component {
         let error = this.props.projects.error;
         let projects = this.props.projects.data.items;
         let pagination = this.props.projects.data.pagination;
+        console.log('rendering projects');
 
         return (
             <div>
                 <h1>Alle projecten</h1>
+                { this.props.children }
                  <ProjectList
                      baseUrl="http://api.imanidap.nl/projects/"
                      fetched={ fetched }
