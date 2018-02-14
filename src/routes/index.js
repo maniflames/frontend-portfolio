@@ -41,13 +41,15 @@ const ProjectDetailEditContainer = (nextState, cb) => {
 const routes = (
   <Route path="/" component={App}>
     <IndexRoute getComponent={Home} />
-    <Route path={"projects"} getComponent={ProjectsContainer}>
-        <Route path={"lol"} getComponent={ProjectDetail} />
+    <Route path={"projects"} getComponent={ProjectsContainer} >
+        <Route path={":id"} getComponent={ProjectDetail} />
     </Route>
-    <Route path={"projects/:id"} getComponent={ProjectDetailContainer} />
-    <Route path={"projects/:id/edit"} getComponent={ProjectDetailEditContainer} name="edit" />
   </Route>
 );
+
+//These are deprecated route components
+// <Route path={"projects/:id"} getComponent={ProjectDetailContainer} />
+// <Route path={"projects/:id/edit"} getComponent={ProjectDetailEditContainer} name="edit" />
 
 // Unfortunately, HMR breaks when we dynamically resolve
 // routes so we need to require them here as a workaround.

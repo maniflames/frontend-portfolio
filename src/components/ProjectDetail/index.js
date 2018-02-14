@@ -17,7 +17,12 @@ import styles from './styles.scss';
 //   )
 // }
 
+//Two important things:
+//Access to fetched projects
+//Being able to fetch a full project based on ID
+
 function ProjectDetail(props) {
+  console.log('this is my thing!! (Detail)');
   return (
     <div className="projectDetail">
 
