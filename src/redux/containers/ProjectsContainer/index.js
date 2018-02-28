@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Router, Route, Link } from 'react-router';
 import { fetchList, remove, add } from '../../actions/projectActions';
 import Project from '../../../components/Project';
 import ProjectList from '../../../components/ProjectList';
@@ -11,10 +12,10 @@ import styles from './styles.scss';
 })
 
 class ProjectsContainer extends React.Component {
-    projects = [];
 
     componentDidMount() {
         this.props.dispatch(fetchList('http://api.imanidap.nl/projects?limit=5/'));
+        //if it has children do the children handler
     }
 
     addClickHandler(url, project) {
@@ -25,47 +26,33 @@ class ProjectsContainer extends React.Component {
       this.props.dispatch(remove(url, id));
     }
 
-    detailRenderHandler(){
-      //project props knows the id given to router
-      console.log(this.props, 'project props');
-
-
-      if(this.props.params.id && this.props.projects.data.items){
-        //get an array of just the project id's
-        let projectIds = this.props.projects.data.items.map((project) => {
-          return project._id;
-        })
-
-        //check if id is in current projects items
-        if(projectIds.indexOf(this.props.params.id) === -1){
-          //if not fetch the project from the API
-
-        } else {
-           //check if all the content is loaded of just a part of it
-          let selectedProject = this.props.projects.data.items.filter((project) => {
-            return project._id = this.props.params.id;
-          })[0]
-
-          if(!selectedProject.content){
-            //fetch the project
-          }
-        }
-      }
-
-
-      return this.props.children;
-    }
-
     render() {
+      //fix below by looking into connect a little bit deeper
         let fetched = this.props.projects.fetched;
         let error = this.props.projects.error;
         let projects = this.props.projects.data.items;
         let pagination = this.props.projects.data.pagination;
 
+        let children = <span></span>;
+        let properties = {
+          img_url: 'http://static.webshopapp.com/shops/207614/files/139724915/image.jpg',
+          name: 'Test Project',
+          description: 'This project is closer to the end result',
+          content: 'I\'m using React.cloneElement to work things out',
+          git_url: '',
+        }
+
+        if(this.props.children){
+          children = React.cloneElement(this.props.children, properties);
+        }
+
         return (
             <div>
                 <h1>Alle projecten</h1>
-                { this.detailRenderHandler() }
+                <Link to="/projects/lolololol">HIEROOO</Link>
+
+                { children }
+
                  <ProjectList
                      baseUrl="http://api.imanidap.nl/projects/"
                      fetched={ fetched }

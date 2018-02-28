@@ -1,5 +1,5 @@
 const initState = {
-    data: [],
+    data: {},
     error: false,
     fetched: false,
     updated: false,
@@ -19,7 +19,6 @@ const projectReducer = (state=initState, action={type: 'default'}) => {
             break;
         }
         case 'SUCCESS_PROJECTS_REQ': {
-          console.log(action.payload);
             return {...initState, fetched: true, data: action.payload}
             break;
         }
@@ -35,8 +34,6 @@ const projectReducer = (state=initState, action={type: 'default'}) => {
           const newItems = state.data.items.filter((project) => {
             return project._id != action.payload.project;
           });
-
-          console.log('after remove',newItems);
 
             return {...state,
               fetched: true,
@@ -58,7 +55,6 @@ const projectReducer = (state=initState, action={type: 'default'}) => {
         }
         case 'SUCCESS_PROJECTS_ADD': {
           const newItems = state.data.items.concat([action.payload]);
-          console.log(newItems);
 
             return { ...initState,
               fetched: true,

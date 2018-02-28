@@ -30,19 +30,13 @@ const ProjectDetailContainer = (nextState, cb) => {
     .catch((e) => { throw e; });
 }
 
-const ProjectDetailEditContainer = (nextState, cb) => {
-    System.import('../redux/containers/ProjectDetailEditContainer')
-    .then(module => cb(null, module.default))
-    .catch((e) => { throw e; })
-}
-
 // We use `getComponent` to dynamically load routes.
 // https://github.com/reactjs/react-router/blob/master/docs/guides/DynamicRouting.md
 const routes = (
   <Route path="/" component={App}>
     <IndexRoute getComponent={Home} />
     <Route path={"projects"} getComponent={ProjectsContainer} >
-        <Route path={":id"} getComponent={ProjectDetail} />
+      <Route path={":id"} getComponent={ProjectDetailContainer} />
     </Route>
   </Route>
 );
@@ -58,7 +52,6 @@ if (module.hot) {
   require('../components/Home');    // eslint-disable-line global-require
   require('../redux/containers/ProjectsContainer');
   require('../redux/containers/ProjectDetailContainer');
-  require('../redux/containers/ProjectDetailEditContainer');
   require('../components/ProjectDetail');
 }
 

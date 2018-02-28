@@ -11,9 +11,29 @@ export function reqSuccess(projects){
     }
 }
 
+export function reqStartDetail(){
+    return {
+        type: 'START_PROJECTS_REQ_DETAIL',
+    }
+}
+
+export function reqSuccessDetail(project){
+    return {
+        type: 'SUCCESS_PROJECTS_REQ_DETAIL',
+        payload: project,
+    }
+}
+
 export function reqError(err){
     return {
         type: 'ERROR_PROJECTS_REQ',
+        payload: err,
+    }
+}
+
+export function reqErrorDetail(err){
+    return {
+        type: 'ERROR_PROJECTS_REQ_DETAIL',
         payload: err,
     }
 }
@@ -106,6 +126,34 @@ export function fetchList(url){
         .catch((err) => {
             console.log(err)
             dispatch(reqError(err))
+        })
+    }
+}
+
+export function fetchDetail(url){
+    return (dispatch) => {
+        const reqHeaders = new Headers();
+        reqHeaders.append('Accept', 'application/json');
+
+        const init = {
+            method: 'GET',
+            headers: reqHeaders,
+            mode: 'cors',
+        };
+
+        dispatch(reqStartDetail())
+
+        return fetch(url, init)
+        .then((res) => {
+            return res.json()
+        })
+        .then((json) => {
+            console.log(json);
+            dispatch(reqSuccessDetail(json))
+        })
+        .catch((err) => {
+            console.log(err)
+            dispatch(reqErrorDetail(err))
         })
     }
 }
