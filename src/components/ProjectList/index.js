@@ -2,9 +2,6 @@ import React from 'react';
 import Project from '../Project';
 import styles from './styles.scss';
 
-//TODO: refactor if statements (best is probably polymorphism just like refactoring switch statements)
-//I do wonder if the polymorphism solution isnt a bit too OOP for this case => did a quick googlesearch found lambda
-
 function ProjectList(props) {
     const fetched = props.fetched;
     const error = props.error;
@@ -16,26 +13,19 @@ function ProjectList(props) {
 
     if(fetched && !error) {
         const projectsHtml = props.projects.map((project, index) => {
+          //Right now disabling remove & add until I add an authenication endpoint to the API
+          //<div onClick={() => {props.remove(props.baseUrl + project._id, project._id)}}>Verwijderen</div>
             return (
-              <li key={ index }>
-                <div onClick={() => {props.remove(props.baseUrl + project._id, project._id)}}>Verwijderen</div>
+              <li className={ styles.projects__project } key={ index }>
                 <Project data={ project }></Project>
               </li>
             )
         })
 
-        const mockupProject = {
-          "description": "lolol",
-          "name": "mdsjdf",
-          "img_url": "https://images.unsplash.com/photo-1505424297051-c3ad50b055ae?auto=format&fit=crop&w=1951&q=80",
-          "git_url": "lolololol",
-          "content": "hihiihihh"
-        }
-
+        //<p onClick={() => {props.add(props.baseUrl, mockupProject)}}>Toevoegen</p>
         return (
           <div>
-            <p onClick={() => {props.add(props.baseUrl, mockupProject)}}>Toevoegen</p>
-            <ul>{ projectsHtml }</ul>
+            <ul className={ styles.projects } >{ projectsHtml }</ul>
           </div>
         )
     }

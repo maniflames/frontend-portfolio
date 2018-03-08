@@ -7,7 +7,6 @@ const initState = {
 const projectDetailReducer = (state=initState, action={ type: 'DEFAULT' } ) => {
   switch (action.type) {
     case 'START_PROJECTS_REQ_DETAIL': {
-      console.log('doing stuff in reducer')
         return {...state, fetched: false}
         break;
     }

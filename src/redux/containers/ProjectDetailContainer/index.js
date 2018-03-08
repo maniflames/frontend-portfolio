@@ -21,6 +21,7 @@ class ProjectDetailContainer extends React.Component {
         description={ this.props.projectDetail.data.description }
         content={ this.props.projectDetail.data.content }
         git_url={ this.props.projectDetail.data.git_url }
+        backLink="/projects"
         ></ProjectDetail>
     )
   }

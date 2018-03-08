@@ -18,7 +18,7 @@ export default vo => `
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     ${vo.cssBundle ? '<link rel="stylesheet" type="text/css" href="' + vo.cssBundle + '">' : ''}
 
-    <title>Universal React Starter Kyt</title>
+    <title>Imani Dap</title>
   </head>
 
   <body>

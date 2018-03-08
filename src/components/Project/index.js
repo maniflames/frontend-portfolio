@@ -7,6 +7,7 @@ function Project(props) {
     const imgStyle = {
         backgroundImage: `url(${props.data.img_url})`,
         backgroundSize: 'cover',
+        backgroundPosition: 'center', 
         width: 500,
         height: 500,
     }

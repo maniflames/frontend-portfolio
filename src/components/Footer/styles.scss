@@ -1,0 +1,12 @@
+@import '../../shared-styles/variables';
+@import '../../shared-styles/fonts';
+
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.footer__social {
+  padding: 20px; 
+}

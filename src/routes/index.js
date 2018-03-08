@@ -6,8 +6,8 @@ import App from '../components/App';
 // chunking assets. Check out the following for more:
 // https://gist.github.com/sokra/27b24881210b56bbaff7#code-splitting-with-es6
 
-const ProjectDetail = (nextState, cb) => {
-  System.import('../components/ProjectDetail')
+const About = (nextState, cb) => {
+  System.import('../components/About')
     .then(module => cb(null, module.default))
     .catch((e) => { throw e; });
 }
@@ -38,6 +38,7 @@ const routes = (
     <Route path={"projects"} getComponent={ProjectsContainer} >
       <Route path={":id"} getComponent={ProjectDetailContainer} />
     </Route>
+    <Route path={"about"} getComponent={About} /> 
   </Route>
 );
 
@@ -52,7 +53,7 @@ if (module.hot) {
   require('../components/Home');    // eslint-disable-line global-require
   require('../redux/containers/ProjectsContainer');
   require('../redux/containers/ProjectDetailContainer');
-  require('../components/ProjectDetail');
+  require('../components/About');
 }
 
 export default routes;

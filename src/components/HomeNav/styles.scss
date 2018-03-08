@@ -2,23 +2,46 @@
 @import '../../shared-styles/variables';
 @import '../../shared-styles/fonts';
 
-ul {
+.homeNav {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100vw;
+  height: 80vh;
   margin-top: 10px;
   text-align: center;
   font-family: $h-font-family;
   color: #ffffff;
 }
 
-li {
+.homeNav a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.homeNav__item {
   margin: 10px;
   padding: 10px;
-  // border: 1px solid white;
+  flex-grow: 1;
 }
 
-a {
-  color: #ffffff;
+.homeNav__item a div {
+  height: 100%;
 }
 
-.paragraph + .paragraph {
-  padding-top: $padding;
+.homeNav__item h1 {
+  padding: 20px;
+}
+
+.homeNav__item:hover .homeNav__item_about::before {
+  content: "About Me";
+}
+
+.homeNav__item:hover .homeNav__item_projects::before {
+  content: "My Projects";
+}
+
+@media (max-width: 1050px) {
+  //flex-direction: column & a lot more
 }

@@ -148,7 +148,6 @@ export function fetchDetail(url){
             return res.json()
         })
         .then((json) => {
-            console.log(json);
             dispatch(reqSuccessDetail(json))
         })
         .catch((err) => {

@@ -1,0 +1,24 @@
+@import '../../shared-styles/variables';
+@import '../../shared-styles/fonts';
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 20px;
+
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.navbar a:hover,
+.navbar a:hover h1 {
+  color: #a1a1a1;
+}
+
+.navbar__items {
+  margin-left: 20px;
+}

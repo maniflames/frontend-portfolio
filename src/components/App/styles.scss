@@ -1,8 +1,8 @@
-
 @import '../../shared-styles/variables';
+@import '../../shared-styles/fonts';
 
 body {
-  background: black;
+  background: #000000;
 }
 
 h1, h2, h3, h4, h5, p {
@@ -11,5 +11,5 @@ h1, h2, h3, h4, h5, p {
 
 button {
   background-color: #000000;
-  color: #FFFFFF; 
+  color: #FFFFFF;
 }
