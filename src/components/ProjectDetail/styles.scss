@@ -5,6 +5,15 @@ div.projectDetail {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-family: $h-font-family;
+}
+
+.projectDetail__img {
+  width: 800px;
+  height: 600px;
+  margin-top: 1100px;
+  background-position: center;
+  background-size: cover;
 }
 
 .projectDetail__backdrop {
@@ -19,13 +28,16 @@ div.projectDetail {
 
 .projectDetail__content {
   position: absolute;
-  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   margin: 150px;
   margin-left: auto;
   margin-right: auto;
   left: 0;
   right: 0;
+  z-index: 3;
 }
 
 .projectDetail__backLink {
@@ -33,5 +45,74 @@ div.projectDetail {
   top: 0;
   right: 0;
   padding: 20px;
-  padding-right: 40px; 
+  padding-right: 40px;
+}
+
+.projectDetail__text {
+  background: #ffffff;
+  padding: 10px 50px 25px 50px;
+  width: 800px;
+}
+
+.projectDetail__text_bold {
+  font-weight: 700;
+}
+
+.projectDetail__text h1,
+.projectDetail__text h2,
+.projectDetail__text h3,
+.projectDetail__text p,
+{
+  color: #000000;
+}
+
+.projectDetail__text button {
+  margin: 5px;
+  border-radius: 5px;
+  padding: 7px 15px 7px 15px;
+}
+
+.projectDetail__text button:hover {
+    box-shadow: 3px 3px 15px #DBDBDB;
+}
+
+.projectDetail__text button:focus {
+    outline: none;
+}
+
+.projectDetail__text > p > div  {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+}
+
+.projectDetail__text > p > div > div {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  margin: 5px;
+}
+
+@media (max-width: 1050px) {
+  .projectDetail__img {
+    width: 100%;
+  }
+
+  .projectDetail__text {
+    width: 100%;
+  }
+
+  .projectDetail__backLink {
+    position: fixed;
+    padding: 0;
+    padding-right: 10px;
+  }
+
+  .projectDetail__backLink h3 {
+    color: #BDBDBD; 
+    opacity: 0.8;
+  }
 }

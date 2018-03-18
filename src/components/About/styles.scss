@@ -13,11 +13,31 @@
 }
 
 .about__image {
-  flex-grow: 2;
-  min-width: 250px;
-  padding: 20px;
+  min-width: 42vw;
+  height: 80vh;
+  background-position: center;
 }
 
 .about__text {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.about__text p {
+  padding: 5px;
+  font-size: 1.4em;
+}
+
+@media (max-width: 1050px) {
+  .about__content {
+    flex-direction: column-reverse;
+  }
+
+  .about__text p {
+    padding: 5px;
+    font-size: 1.2em;
+  }
 }

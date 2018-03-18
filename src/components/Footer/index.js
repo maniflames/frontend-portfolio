@@ -14,6 +14,11 @@ function Footer(){
           <h1 className="fab fa-linkedin"></h1>
         </a>
       </li>
+      <li className={ styles.footer__social }>
+        <a target="_blank" href="mailto:contact@imanidap.nl?subject=hi">
+          <h1 className="fas fa-envelope"></h1>
+        </a>
+      </li>
     </ul>
   )
 }

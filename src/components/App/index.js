@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import styles from './styles.scss';
 import Home from '../Home';
 import Footer from '../Footer';
@@ -7,11 +7,20 @@ import ProjectsContainer from '../../redux/containers/ProjectsContainer';
 import { Router, Route, Link } from 'react-router';
 
 function App({ children }) {
+  let nav = '';
+  if(children.props.router.location.pathname != '/'){
+    nav = <Navbar></Navbar>
+  }
+
+  let footer = '';
+  if(children.props.router.location.pathname != '/about'){
+    footer = <Footer></Footer>
+  }
   return (
     <div>
-        <Navbar></Navbar> 
+        { nav }
         <div>{ children }</div>
-        <Footer></Footer>
+        { footer }
     </div>
   );
 }

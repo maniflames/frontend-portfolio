@@ -8,23 +8,14 @@ import Pagination from '../../../components/Pagination';
 import styles from './styles.scss';
 
 @connect((store) => {
-  console.log(store); 
     return store
 })
 
 class ProjectsContainer extends React.Component {
 
     componentDidMount() {
-        this.props.dispatch(fetchList('http://api.imanidap.nl/projects?limit=5/'));
+        this.props.dispatch(fetchList('http://api.imanidap.nl/projects/'));
     }
-
-    // addClickHandler(url, project) {
-    //   this.props.dispatch(add(url, project));
-    // }
-    //
-    // removeClickHandler(url, id) {
-    //   this.props.dispatch(remove(url, id));
-    // }
 
     render() {
       //fix below by looking into connect a little bit deeper
@@ -35,7 +26,7 @@ class ProjectsContainer extends React.Component {
 
         return (
             <div>
-                <h1>My Projects</h1>
+                <h1>My Work</h1>
                 { this.props.children }
                  <ProjectList
                      baseUrl="http://api.imanidap.nl/projects/"
