@@ -14,7 +14,7 @@ import styles from './styles.scss';
 class ProjectsContainer extends React.Component {
 
     componentDidMount() {
-        this.props.dispatch(fetchList('http://api.imanidap.nl/projects/'));
+        this.props.dispatch(fetchList('https://api.imanidap.nl/projects/'));
     }
 
     render() {
@@ -29,7 +29,7 @@ class ProjectsContainer extends React.Component {
                 <h1>My Work</h1>
                 { this.props.children }
                  <ProjectList
-                     baseUrl="http://api.imanidap.nl/projects/"
+                     baseUrl="https://api.imanidap.nl/projects/"
                      fetched={ fetched }
                      error={ error }
                      projects={ projects }
