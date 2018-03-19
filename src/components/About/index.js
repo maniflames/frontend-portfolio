@@ -4,7 +4,7 @@ import Footer from '../Footer';
 
 function About() {
   const imgStyleAbout = {
-    backgroundImage: 'url(\'http://assets.imanidap.nl/portfolio/img/headshot-black-background-min.jpg\')',
+    backgroundImage: 'url(\'https://assets.imanidap.nl/portfolio/img/headshot-black-background-min.jpg\')',
     backgroundSize: 'cover',
   }
 
