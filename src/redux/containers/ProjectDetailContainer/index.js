@@ -10,7 +10,7 @@ import ProjectDetail from '../../../components/ProjectDetail';
 
 class ProjectDetailContainer extends React.Component {
   componentDidMount() {
-    this.props.dispatch(fetchDetail('http://api.imanidap.nl/projects/' + this.props.params.id));
+    this.props.dispatch(fetchDetail('https://api.imanidap.nl/projects/' + this.props.params.id));
   }
 
   render(){
