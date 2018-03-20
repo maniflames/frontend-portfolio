@@ -10,8 +10,7 @@ div.projectDetail {
 
 .projectDetail__img {
   width: 800px;
-  height: 600px;
-  margin-top: 1100px;
+  min-height: 600px;
   background-position: center;
   background-size: cover;
 }
@@ -27,7 +26,6 @@ div.projectDetail {
 }
 
 .projectDetail__content {
-  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -97,12 +95,16 @@ div.projectDetail {
 }
 
 @media (max-width: 1050px) {
+  .projectDetail__content {
+    margin: 0px;
+  }
+
   .projectDetail__img {
-    width: 100%;
+    width: 90%;
   }
 
   .projectDetail__text {
-    width: 100%;
+    width: 90%;
   }
 
   .projectDetail__backLink {
@@ -112,7 +114,7 @@ div.projectDetail {
   }
 
   .projectDetail__backLink h3 {
-    color: #BDBDBD; 
+    color: #BDBDBD;
     opacity: 0.8;
   }
 }
