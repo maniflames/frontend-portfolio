@@ -17,15 +17,19 @@ class Cube extends React.Component {
     }
   }
 
-  componentDidUpdate(){
+  componentDidUpdate(prevProps, prevState){
     if(!this.state.cube){
       this.addObjects();
       this.state.app.start();
+    } else  {
+      if(this.props.left != prevProps.left || this.props.right != prevProps.right){
+        this.stopAnimation();
+        this.animationHandler(this.props.left, this.props.right)
+      }
     }
   }
 
   componentWillUnmount(){
-
     const canvas = this.canvas.getElementsByTagName('canvas')[0];
     const gl = canvas.getContext('webgl');
     gl.getExtension('WEBGL_lose_context').loseContext();
@@ -74,23 +78,42 @@ class Cube extends React.Component {
     box.addTo(this.state.app);
   }
 
-  mouseEnterHandler(){
-    if(!this.state.loop){
-      const animation = new WHS.Loop(() => {
-        this.state.cube.rotation.y -= 0.03;
-        this.state.cube.rotation.x += 0.01;
-      });
+  animationHandler(hoverLeft, hoverRight){
+    let animation = false;
 
+    if(hoverLeft) {
+      animation = this.animateLeft()
+    } else if (hoverRight) {
+      animation = this.animateRight()
+    }
+
+    if(!this.state.loop && this.state.cube && animation){
       this.setState({app: this.state.app, cube: this.state.cube, loop: animation});
       animation.start(this.state.app);
-    } else {
-      this.state.loop.start(this.state.app);
     }
   }
 
-  mouseLeaveHandler(){
+  animateLeft(){
+    return new WHS.Loop(() => {
+      this.state.cube.rotation.y -= 0.02;
+      //the block used to have a more intense rotation but I want to test how
+      //people react to the more toned down rotation
+
+      // this.state.cube.rotation.x += 0.006;
+    });
+  }
+
+  animateRight(){
+    return new WHS.Loop(() => {
+      this.state.cube.rotation.y += 0.02;
+      // this.state.cube.rotation.x += 0.006;
+    });
+  }
+
+  stopAnimation(){
     if(this.state.loop){
       this.state.loop.stop(this.state.app);
+      this.setState({ ... this.state, loop: false})
     }
   }
 
@@ -101,11 +124,7 @@ class Cube extends React.Component {
     }
 
   return (
-      <div
-          ref={(input) => { this.canvas = input; }}
-          onMouseEnter={ (e) => this.mouseEnterHandler(e) }
-          onMouseLeave={ (e) => this.mouseLeaveHandler(e) }
-          >
+      <div ref={(input) => { this.canvas = input; }}>
           <h1 className={ styles.cube__text }>{ text }</h1>
       </div>
     )

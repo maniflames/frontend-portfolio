@@ -1,18 +1,156 @@
-
 @import '../../shared-styles/variables';
 @import '../../shared-styles/fonts';
+@import '../../shared-styles/keyframes';
 
-section {
+.#{homeNav} {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #ffffff;
-}
-
-h1 {
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 100%;
+  height: 70vh;
+  margin-top: 10px;
+  text-align: center;
   font-family: $h-font-family;
+  color: #ffffff;
+
+    &#{__item},
+    &__cube {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      width: 30vw;
+      animation-iteration-count: 1;
+      animation-duration: 1s;
+
+        a {
+          backface-visibility: hidden; //smoother text animation
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: inherit;
+          color: #ffffff;
+          text-decoration: none;
+
+            h1 {
+              align-self: center;
+              padding: 20px;
+              padding-bottom: 0;
+              margin-bottom: 0;
+            }
+
+            &:hover {
+              animation-duration: 1s;
+              animation-fill-mode: forwards;
+            }
+        }
+
+        &_left {
+          @extend .homeNav__item;
+          animation-name: fadeInLeft;
+
+          a {
+
+            h1 {
+              transition-property: all;
+              transition-duration: .4s;
+              transform: scale(1, 1) translate(0, 0);
+            }
+
+            &:hover h1 {
+              transition-property: all;
+              transition-duration: .4s;
+              transform: scale(1.2, 1.2) translateX(35px);
+            }
+          }
+        }
+
+        &_right {
+          @extend .homeNav__item;
+          animation-name: fadeInRight;
+
+          a {
+            h1 {
+              transition-property: all;
+              transition-duration: .4s;
+              transform: scale(1, 1) translate(0, 0);
+            }
+
+            &:hover h1{
+              transition-property: all;
+              transition-duration: .4s;
+              transform: scale(1.2, 1.2) translateX(-35px);
+            }
+          }
+        }
+    }
+
+    &__cube {
+      align-items: center;
+      opacity: 0;
+      animation-name: fadeIn;
+      animation-duration: 1.5s;
+      animation-delay: 0.5s;
+      animation-fill-mode: forwards;
+    }
 }
 
-.paragraph + .paragraph {
-  padding-top: $padding;
+@media (max-width: 1050px) {
+  .#{homeNav} {
+    flex-direction: column;
+    align-items: center;
+    width: inherit;
+
+    &__item {
+      max-width: 300px;
+      height: 300px;
+
+      & a {
+
+        h1 {
+          font-size: 2em;
+
+          &::after {
+            content: "";
+            display: block;
+            opacity: 0.4;
+            background-color: #fff;
+            width: 75px;
+            height: 75px;
+            z-index: -1;
+            position: absolute;
+            animation-duration: 6s;
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+          }
+        }
+
+        &:hover h1 {
+          transition: none;
+          transform: scale(1, 1) translate(0, 0);
+        }
+      }
+
+      &_left a h1{
+         &::after {
+           left: ((136 / 2) - (75 / 2)) + 1px;
+           top: 3px;
+           animation-name: cubeLeft;
+         }
+      }
+
+      &_right a h1{
+         &::after {
+           left: ((172 / 2) - (75 / 2)) + 1px;
+           top: 3px;
+           animation-name: cubeRight;
+         }
+      }
+    }
+
+    &__cube {
+      display: none;
+    }
+  }
 }

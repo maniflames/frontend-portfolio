@@ -14,13 +14,14 @@ function App({ children }) {
 
   let footer = '';
   if(children.props.router.location.pathname != '/about'){
-    footer = <Footer></Footer>
+    footer = <Footer className={ styles.footer }></Footer>
   }
+
   return (
-    <div>
-        { nav }
-        <div>{ children }</div>
-        { footer }
+    <div className={ styles.app }>
+      { nav }
+      { children }
+      { footer }
     </div>
   );
 }
