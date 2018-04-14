@@ -11,17 +11,12 @@ function App({ children }) {
   if(children.props.router.location.pathname != '/'){
     nav = <Navbar></Navbar>
   }
-
-  let footer = '';
-  if(children.props.router.location.pathname != '/about'){
-    footer = <Footer className={ styles.footer }></Footer>
-  }
-
+  
   return (
     <div className={ styles.app }>
       { nav }
       { children }
-      { footer }
+      <Footer className={ styles.footer }></Footer>
     </div>
   );
 }

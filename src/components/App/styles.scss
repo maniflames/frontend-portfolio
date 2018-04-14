@@ -21,12 +21,12 @@ html, body {
 .app {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   text-align: center;
   margin: 0;
   padding: 0;
   min-height: 100vh;
-  backface-visibility: hidden; 
+  backface-visibility: hidden;
 }
 
 @keyframes backgroundIn {

@@ -22,7 +22,6 @@ function About() {
           My curriculum requires me to think about design (concepts and UX) and develop solutions.
         </p>
         <p className={ styles.about__text_cta }>Interested? Mail me by clicking on the envelope below!</p>
-        <Footer></Footer>
       </div>
     </div>
     </div>
