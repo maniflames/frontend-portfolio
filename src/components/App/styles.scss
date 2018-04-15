@@ -1,7 +1,14 @@
 @import '../../shared-styles/variables';
 @import '../../shared-styles/fonts';
 
-h1, h2, h3, h4, h5, p {
+h1, h2, h3, h4, h5 {
+  font-family: $h-font-family;
+  letter-spacing: $h-letter-spacing;
+  color: #FFFFFF;
+}
+
+p {
+  font-family: $p-font-family, sans-serif;
   color: #FFFFFF;
 }
 
