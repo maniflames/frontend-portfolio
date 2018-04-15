@@ -7,7 +7,7 @@ function ProjectList(props) {
     const error = props.error;
 
     if(!fetched) {
-        return <h3>Loading .....</h3>
+        return <h3>Wait for it :P</h3>
     }
 
     if(fetched && !error) {

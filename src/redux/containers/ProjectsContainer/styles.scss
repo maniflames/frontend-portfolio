@@ -1,6 +1,14 @@
+@import '../../../shared-styles/keyframes';
+
 h1 {
   color: #ffffff;
   text-align: center;
   font-weight: 700;
   text-transform: uppercase;
+}
+
+.projectsContainer h1 {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
 }

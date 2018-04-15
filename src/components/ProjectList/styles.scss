@@ -1,22 +1,22 @@
 @import '../../shared-styles/variables';
 @import '../../shared-styles/fonts';
 
-.projects {
+.#{projects} {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-}
 
-.projects__project {
-  margin: 15px;
-  border-bottom: solid 3px #f2f2f2;
-}
+  &__project {
+    margin: 15px;
+    border-bottom: solid 3px #f2f2f2;
 
-.projects__project a {
-  text-decoration: none;
-}
+    a {
+      text-decoration: none;
+    }
 
-.projects__project h1 {
-  padding-top: 5%;
+    h1 {
+      padding-top: 5%;
+    }
+  }
 }

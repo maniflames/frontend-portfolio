@@ -25,7 +25,7 @@ class ProjectsContainer extends React.Component {
         let pagination = this.props.projects.data.pagination;
 
         return (
-            <div>
+            <div className={styles.projectsContainer}>
                 <h1>My Work</h1>
                 { this.props.children }
                  <ProjectList
