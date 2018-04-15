@@ -16,14 +16,15 @@
   animation-fill-mode: forwards;
 
   &__items {
-    margin-left: 20px;
+    margin-left: 30px;
 
     a {
       text-decoration: none;
       color: #ffffff;
-        transition-property: all;
-        transition-duration: .4s;
-        opacity: 1;
+      letter-spacing: $h-letter-spacing;
+      transition-property: all;
+      transition-duration: .4s;
+      opacity: 1;
 
       &:hover {
         transition-property: all;
