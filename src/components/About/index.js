@@ -15,13 +15,23 @@ function About() {
       <div className={ styles.about__text }>
       <h1>Hi, I&#39;m Imani</h1>
         <p>
-          I&#39;m a Creative Media and Game Technologies student from the Netherlands.
-          Right now, I&#39;m looking for an internship between September 2018 and February 2019. My goal is to do my internship abroad
-          (anywhere in Europe), to grow as a person and explore different environments.
-          I would love to develop experiences using AR, WebGL, Arduino, Raspberry Pi or similar technologies.
-          My curriculum requires me to think about design (concepts and UX) and develop solutions.
+          Right now I&#39;m doing the bachelor Creative Media and Game Technologies in the Netherlands.
+          I&#39;m looking for an internship between September 2018 and February 2019, preferably abroad so I can experience something new.
         </p>
-        <p className={ styles.about__text_cta }>Interested? Mail me by clicking on the envelope below!</p>
+        <p>
+          As a creative full-stack developer I get involved in a project right from the start.
+          Concepting, researching and communicating with clients is part of what I do.
+        </p>
+        <p>
+          In the 1,5 year that I&#39;ve been developing, I&#39;ve discovered that I love things that work.
+          It&#39;s probably the main reason why the back-end caught my attention first.
+          I&#39;ve developed more interests along the way and started playing around with three.js, Arduino & Raspberry Pi.
+          To keep it short, I believe that 3D and hardware can give someone an experience that can take over the imagination.
+          Hopefully, there is a place where I can keep experimenting with these technologies or learn something else that will blow my mind.
+        </p>
+        <p className={ styles.about__text_cta }>
+          Do you have a spot left for an eager student? Contact me by hitting that envelope below!
+        </p>
       </div>
     </div>
     </div>
