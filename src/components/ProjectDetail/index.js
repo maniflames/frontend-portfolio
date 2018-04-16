@@ -9,7 +9,7 @@ function ProjectDetail(props) {
   let content = (
     <div className={ styles.projectDetail__content } >
       <div className={ styles.projectDetail__img } style={{ backgroundImage: `url(${props.img_url})` }}>
-        <Link to={props.backLink} className={styles.projectDetail__backLink}><h3>back</h3></Link>
+        <Link to={props.backLink} className={styles.projectDetail__backLink}><h3 className="fa fa-times"></h3></Link>
       </div>
       <div className={ styles.projectDetail__text }>
         <h1>{ props.name }</h1>
@@ -23,7 +23,7 @@ function ProjectDetail(props) {
     content = (
       <div className={ styles.projectDetail__content } >
         <div className={ styles.projectDetail__img }  style={{ backgroundImage: `url(${props.img_url})` }} >
-          <Link to={props.backLink} className={styles.projectDetail__backLink}><h3>back</h3></Link>
+          <Link to={props.backLink} className={styles.projectDetail__backLink}><h3 className="fa fa-times"></h3></Link>
         </div>
         <div className={ styles.projectDetail__text }>
           <h1>{ props.name }</h1>
