@@ -19,6 +19,7 @@ button {
 
 html, body {
   background: #000000;
+  scroll-behavior: smooth;
   animation-name: backgroundIn;
   animation-duration: 1s;
   animation-fill-mode: forwards;

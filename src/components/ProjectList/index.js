@@ -24,7 +24,7 @@ function ProjectList(props) {
         //<p onClick={() => {props.add(props.baseUrl, mockupProject)}}>Toevoegen</p>
         return (
           <div>
-            <ul className={ styles.projects } onClick={ (e) => { if(e.target.classList){ window.scrollTo(0,0) } }}>{ projectsHtml }</ul>
+            <ul className={ styles.projects }>{ projectsHtml }</ul>
           </div>
         )
     }

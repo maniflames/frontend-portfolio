@@ -8,8 +8,9 @@ function ProjectDetail(props) {
 
   let content = (
     <div className={ styles.projectDetail__content } >
-      <div className={ styles.projectDetail__img } style={{ backgroundImage: `url(${props.img_url})` }} />
-      <Link to={props.backLink} className={styles.projectDetail__backLink}><h3 className="fas fa-times"></h3></Link>
+      <div className={ styles.projectDetail__img } style={{ backgroundImage: `url(${props.img_url})` }}>
+        <Link to={props.backLink} className={styles.projectDetail__backLink}><h3>back</h3></Link>
+      </div>
       <div className={ styles.projectDetail__text }>
         <h1>{ props.name }</h1>
         <p className={ styles.projectDetail__text_bold} >{ props.description }</p>
@@ -21,8 +22,9 @@ function ProjectDetail(props) {
   if(props.git_url && props.git_url != 'false'){
     content = (
       <div className={ styles.projectDetail__content } >
-        <div className={ styles.projectDetail__img }  style={{ backgroundImage: `url(${props.img_url})` }} />
-        <Link to={props.backLink} className={styles.projectDetail__backLink}><h3 className="fas fa-times"></h3></Link>
+        <div className={ styles.projectDetail__img }  style={{ backgroundImage: `url(${props.img_url})` }} >
+          <Link to={props.backLink} className={styles.projectDetail__backLink}><h3>back</h3></Link>
+        </div>
         <div className={ styles.projectDetail__text }>
           <h1>{ props.name }</h1>
           <p className={ styles.projectDetail__text_bold } >{ props.description }</p>
@@ -47,8 +49,7 @@ function ProjectDetail(props) {
 
 
   return (
-    <div className={ styles.projectDetail }>
-      <div className={ styles.projectDetail__backdrop }></div>
+    <div className={ styles.projectDetail } id="project">
       { content }
     </div>
   )

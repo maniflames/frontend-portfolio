@@ -7,7 +7,7 @@ function Project(props) {
         backgroundImage: `url(${props.data.img_url})`,
     }
 
-    const url = '/projects/' + props.data._id;
+    const url = '/projects/' + props.data._id + '#project';
 
     return(
       <Link to={ url } >

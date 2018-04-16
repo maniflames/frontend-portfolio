@@ -23,18 +23,16 @@ class ProjectsContainer extends React.Component {
         let error = this.props.projects.error;
         let projects = this.props.projects.data.items;
         let pagination = this.props.projects.data.pagination;
+        let projectList = <div></div>;
+        if( !this.props.params.id ){
+          projectList = <ProjectList baseUrl="https://api.imanidap.nl/projects/" fetched={ fetched } error={ error } projects={ projects }></ProjectList>
+        }
 
         return (
             <div className={styles.projectsContainer}>
                 <h1>My Work</h1>
                 { this.props.children }
-                 <ProjectList
-                     baseUrl="https://api.imanidap.nl/projects/"
-                     fetched={ fetched }
-                     error={ error }
-                     projects={ projects }
-                 >
-                 </ProjectList>
+                { projectList }
             </div>
         )
     }
