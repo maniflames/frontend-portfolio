@@ -46,3 +46,16 @@ html, body {
     background-color: #000;
   }
 }
+
+@media (max-width: 1050px) {
+  .app {
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+
+    ul {
+      flex: 1 0 auto;
+      align-self: center;
+    }
+  }
+}

@@ -21,3 +21,12 @@
     }
   }
 }
+
+@media (max-width: 1050px) {
+  .footer {
+    flex: 1 0 auto;
+    //this is a very unprofessional fix but I'm not sure what mobile flex-box is doing
+    //TODO: find a better solution
+    margin-top: 200px;
+  }
+}

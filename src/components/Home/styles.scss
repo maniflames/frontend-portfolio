@@ -99,11 +99,14 @@
 @media (max-width: 1050px) {
   .#{homeNav} {
     flex-direction: column;
+    flex-wrap: nowrap;
     align-items: center;
     width: inherit;
 
     &__item {
-      max-width: 300px;
+      flex: 1 0 auto;
+      align-self: center;
+      width: 80vw;
       height: 300px;
 
       & a {
