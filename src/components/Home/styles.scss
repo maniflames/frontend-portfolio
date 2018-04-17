@@ -137,7 +137,8 @@
 
       &_left a h1{
          &::after {
-           left: ((136 / 2) - (75 / 2)) + 1px;
+           //left: ((136 / 2) - (75 / 2)) + 1px;
+           left: 36px;
            top: 3px;
            animation-name: cubeLeft;
          }
@@ -145,7 +146,8 @@
 
       &_right a h1{
          &::after {
-           left: ((172 / 2) - (75 / 2)) + 1px;
+           //left: ((172 / 2) - (75 / 2)) + 1px;
+           left: 70px;
            top: 3px;
            animation-name: cubeRight;
          }
